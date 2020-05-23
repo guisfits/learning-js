@@ -3,13 +3,13 @@
 // ! Code structure
 
 "use strict"; // ? enable modern JS features, if we using class/modules the use strict is by default
-const itsWords = 1 // ? semicolon; is not required, but is wanted in many cases to prevent unexpected errors
+const itsWords = 1; // ? semicolon; is not required, but is wanted in many cases to prevent unexpected errors
 
 // ! Variables
 
 let thisCanBeChange = "a";
 const thisCannotBeChange = "constant";
-var IamTheOldOne = "Say hello to grandpa"
+var IamTheOldOne = "Say hello to grandpa";
 
 const aA1_$ = "I'm a valid name";
 const HARD_CODED_VALUE = "IS_BETTER_TO_FOLLOW_THIS_CONVENTION";
@@ -25,12 +25,14 @@ const isBoolean = true;
 const empty = null;
 let undefinedValue;
 const mrsObject = {};
-const str1 = "1", str2 = '2', str3 = `${3}`;
+const str1 = "1",
+  str2 = "2",
+  str3 = `${3}`;
 
 // ? symbol type is used to create unique identifies for objects
 
 const myTypeIsNumber = typeof integerOrFloat;
-const myTypeIsString = typeof(str1);
+const myTypeIsString = typeof str1;
 
 // ! Type Conversions
 
@@ -40,11 +42,17 @@ const isNumber = Number("123");
 const isString = String(123);
 
 const three = "1" + 2;
-const falsy1 = 0, falsy2 = null, falsy3 = undefined, falsy4 = NaN; 
-const truly1 = " ", truly2 = "0";
+const falsy1 = 0,
+  falsy2 = null,
+  falsy3 = undefined,
+  falsy4 = NaN;
+const truly1 = " ",
+  truly2 = "0";
 
 // ! Operators
 
+const unaryAdd = +1;
+const unarySubtraction = -1;
 const add = 1 + 2;
 const subtraction = 2 - 1;
 const multiplication = 5 * 1; // is 1
@@ -53,9 +61,8 @@ const exponentiation = 5 ** 2; // is 25
 
 const nowIamANumber = +"1";
 const alwaysNegativeTwo = -2;
-console.log(+alwaysNegativeTwo) // print -2;
-
-console.log(1 + 2 * 3);
+console.log(+alwaysNegativeTwo); // print -2;
+const isSeven = 1 + 2 * 3;
 
 /*
 "" + 1 + 0 = "10" 
@@ -74,3 +81,35 @@ null + 1 = 1
 undefined + 1 = NaN 
 " \t \n" - 2 = -2 
 */
+
+// ! Comparison
+
+const strLessThan = "A" < "B";
+const strGreaterThan = "B" > "A";
+const caseMatters = "a" > "A";
+
+const stringConversion = "1" == 1;
+const booleanConversion = false == 0;
+const undefinedNullTrue = undefined == null;
+const nullAndZeroComparison = null == 0; // false
+const undefinedNullTrue = null >= 0; // true
+
+/*
+? Comparison operators return a boolean value.
+? Strings are compared letter-by-letter in the “dictionary” order.
+? When values of different types are compared, they get converted to numbers (with the exclusion of a strict equality check).
+? The values null and undefined equal == each other and do not equal any other value.
+? Be careful when using comparisons like > or < with variables that can occasionally be null/undefined. Checking for null/undefined separately is a good idea.
+*/
+
+// ! Conditional
+
+// ? We can also pass a pre-evaluated boolean value to if, like this:
+
+const trulyOrFalsyCondition = year == 2015;
+if (trulyOrFalsyCondition) {
+}
+
+// ! Nullish coalescing Operator
+
+const isTwo = null ?? 2; // ? The precedence of ?? is low, so use () on complex expressions
