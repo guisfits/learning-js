@@ -74,3 +74,40 @@ null + 1 = 1
 undefined + 1 = NaN 
 " \t \n" - 2 = -2 
 */
+
+// ! Objects
+
+const user = {
+    id: 1,
+    name: "John",
+    isFavorite: true,
+};
+
+delete user.isFavorite;
+
+const nameInUser = "name" in user; // true
+
+user.id;
+user["name"];
+const userKey = "isFavorite"
+user[userKey];
+
+for(let key in user)
+    console.log(key);
+
+// ! This
+
+function whoTheHellAreYou() {
+    console.log(this.name);
+}
+
+const heisenberg = {
+    name: "Heisenberg"
+};
+
+const walterWhite = {
+    name: "Walter White"
+};
+
+heisenberg.sayMyName = whoTheHellAreYou;
+walterWhite.sayMyName = whoTheHellAreYou;
