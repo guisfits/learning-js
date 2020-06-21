@@ -111,3 +111,37 @@ const walterWhite = {
 
 heisenberg.sayMyName = whoTheHellAreYou;
 walterWhite.sayMyName = whoTheHellAreYou;
+
+// ! new
+
+/*
+* When a function is executed with new, it does the following steps:
+* 1. A new empty object is created and assigned to this.
+* 2. The function body executes. Usually it modifies this, adds new properties to it.
+* 3. The value of this is returned.
+*/
+
+function User(name) {
+    // this = {};  (implicitly)
+    this.name = name;
+    this.isAdmin = false;
+    // return this;  (implicitly)
+}
+
+// ! Optional chaining: ?.
+
+let obj = null;
+obj?.prop // * returns obj.prop if obj exists, otherwise undefined.
+obj?.[prop] // * returns obj[prop] if obj exists, otherwise undefined.
+obj?.method() // * calls obj.method() if obj exists, otherwise returns undefined.
+
+// ! Symbols
+
+// * Symbol is a primitive type for unique identifiers.
+
+// both are different
+const sym1 = Symbol("a");
+const sym2 = Symbol("a");
+
+// Get by global
+const value = Symbol.for("globa-symbol");
