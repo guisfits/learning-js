@@ -184,3 +184,70 @@ const sym2 = Symbol("a");
 
 // Get by global
 const value = Symbol.for("globa-symbol");
+
+// ! Number
+
+// ? Writing a number
+
+const oneMillion = 1e9; // 1.000.000.000
+const sevenMillions = 7.123e9; // 7.123.000.000
+
+const divideByThree = 1e-3; // 0.001
+const divideBySix = 7.123e-6 // 0.000007123
+
+// ? Hex, binary and octal numbers
+
+const hexa = 0xff;
+const binary = 0b11111111; // binary form of 255
+const octa = 0o377; // octal form of 255
+
+// ? toString
+
+const num = 256;
+num.toString(2); //  11111111
+num.toString(16); //  ff
+123456..toString(36); // 2n9c
+
+// ? toFixed
+
+(1.234).toFixed(); // "1.23" as string!
+
+// ? Rounding
+
+Math.floor(num) //rount down
+Math.ceil(num) //rount up
+Math.round(num) //round up where >= 5, down when is < 5
+Math.trunc(num) // remove nuumbers after .
+
+// ? Imprecise calculations
+
+0.1 + 0.2 == 0.3  // false
+
+const sum = 0.1 + 0.2;
+sum.toFixed(2); // 0.30
+9999999999999999 // is 10000000000000000
+
+// ? isFinite and isNaN
+
+isNaN(NaN) // true
+NaN === NaN // false
+
+isFinite("15") // true
+isFinite("str") // false, because a special value: NaN
+isFinite(Infinity) // false
+
+// ? parsing
+
+// * Numeric conversion using a plus + or Number() is strict. If a value is not exactly a number, it fails:
++"100px" // NaN
+
+// * parseInt and parseFloat will “read” a number from a string until they can’t. In case of an error, the gathered number is returned
+parseInt("100px") // 100
+
+parseInt("a123") // NaN, the first symbol stops the process
+
+// ? Other Math functions
+
+Math.randon() // return a random number from 0 to 1 (not including 1)
+Math.max(1, 5, -10) // 5
+Math.min(1, 5, -10) // -10
