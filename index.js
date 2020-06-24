@@ -251,3 +251,13 @@ parseInt("a123") // NaN, the first symbol stops the process
 Math.randon() // return a random number from 0 to 1 (not including 1)
 Math.max(1, 5, -10) // 5
 Math.min(1, 5, -10) // -10
+
+// ! String
+
+slice(start, end)	// * from start to end (not including end)	allows negatives
+substring(start, end)	// * between start and end	negative values mean 0
+substr(start, length)	// * from start get length characters	allows negative start
+
+// ? strings are compared character-by-character in alphabetical order.
+// The characters are compared by their numeric code.
+// a > Z = The code for a (97) is greater than the code for Z (90).
