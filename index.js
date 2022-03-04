@@ -85,9 +85,9 @@ undefined + 1 = NaN
 // ! Objects
 
 const user = {
-    id: 1,
-    name: "John",
-    isFavorite: true,
+  id: 1,
+  name: "John",
+  isFavorite: true,
 };
 
 delete user.isFavorite;
@@ -99,21 +99,21 @@ user["name"];
 const userKey = "isFavorite"
 user[userKey];
 
-for(let key in user)
-    console.log(key);
+for (let key in user)
+  console.log(key);
 
 // ! This
 
 function whoTheHellAreYou() {
-    console.log(this.name);
+  console.log(this.name);
 }
 
 const heisenberg = {
-    name: "Heisenberg"
+  name: "Heisenberg"
 };
 
 const walterWhite = {
-    name: "Walter White"
+  name: "Walter White"
 };
 
 heisenberg.sayMyName = whoTheHellAreYou;
@@ -161,10 +161,10 @@ const isTwo = null ?? 2; // ? The precedence of ?? is low, so use () on complex 
 */
 
 function User(name) {
-    // this = {};  (implicitly)
-    this.name = name;
-    this.isAdmin = false;
-    // return this;  (implicitly)
+  // this = {};  (implicitly)
+  this.name = name;
+  this.isAdmin = false;
+  // return this;  (implicitly)
 }
 
 // ! Optional chaining: ?.
@@ -236,10 +236,10 @@ isFinite("15") // true
 isFinite("str") // false, because a special value: NaN
 isFinite(Infinity) // false
 
-// ? parsing
+  // ? parsing
 
-// * Numeric conversion using a plus + or Number() is strict. If a value is not exactly a number, it fails:
-+"100px" // NaN
+  // * Numeric conversion using a plus + or Number() is strict. If a value is not exactly a number, it fails:
+  + "100px" // NaN
 
 // * parseInt and parseFloat will “read” a number from a string until they can’t. In case of an error, the gathered number is returned
 parseInt("100px") // 100
@@ -261,3 +261,94 @@ substr(start, length)	// * from start get length characters	allows negative star
 // ? strings are compared character-by-character in alphabetical order.
 // The characters are compared by their numeric code.
 // a > Z = The code for a (97) is greater than the code for Z (90).
+
+// ! Arrays
+
+// ? Arrays are reference type
+
+const alphabet = ['a', 'b', 'c']
+
+alphabet.shift(); // axtracts an item from the beginning
+alphabet.unshift('a'); // adds items to the beginning
+
+alphabet.push(...'d'); // adds items to the end
+alphabet.pop(); // extracts an item from the end
+
+// ? Pop and Push is o(0), shift and unshift is o(n)
+
+for (let letter of alphabet) {
+  console.log(letter); // 'a', 'b', ...
+}
+
+// * Doesn't use 'for ..in' 
+// * The loop for..in iterates over all properties, not only the numeric ones.
+
+alphabet.splice(1, 1); // remove 'b'
+alphabet.splice(1, 0, 'b'); // insert 'b' at index 1 and shift others to right
+
+alphabet.slice(0, 2); // returns a new array with 'a' and 'b'
+
+alphabet.concat(['d', 'e'], ['f', 'g']); // returns a new array with the oringinal one and the parameters
+
+alphabet.indexOf('b') // 1
+alphabet.includes('a') // true
+
+const letter = alphabet.find((item, index, array) => item === 'b')
+const letters = alphabet.find((item, index, array) => item > 'b')
+const lenghts = alphabet.map(x => x.length);
+
+let numbers = [2, 15, 1]
+numbers.sort() // sort the arrary itself and return 1, 15, 2
+// ? The sort function will sort items as strings by default
+// ? for numbers, use a function
+// ? A comparison function is only required to return a positive number to say “greater” and a negative number to say “less”.
+numbers.sort((a, b) => a - b) // asc
+numbers.sort((a, b) => b - a) // desc
+
+// change itself
+alphabet.reverse() // returns ...c, b, a
+
+'Luke, Leia, Han'.split(', '); // returns [Luke, Leia, Han]
+['Luke', 'Leia', 'Han'].join(', ') // return "Luke, Leia, Han"
+
+[1, 2, 3, 4, 5].reduce((sum, item, index, array) => sum + item, 0); // return 15
+
+Array.isArray(alphabet) //true
+
+alphabet.some((value) => value !== null) // Any
+alphabet.every((value) => value !== null) // All
+
+// * sort, reverse and splice modify the array itself.
+
+
+// ! Maps
+
+const map = new Map() // creates the map.
+const key = 'key'
+map.set(key, 'value') // stores the value by the key.
+map.get(key) // returns the value by the key, undefined if key doesn’t exist in map.
+map.has(key) // returns true if the key exists, false otherwise.
+map.delete(key) // removes the value by the key.
+map.clear() // removes everything from the map.
+map.size // returns the current element count.
+
+map.keys() // returns an iterable for keys,
+map.values() // returns an iterable for values,
+map.entries() // returns an iterable for entries [key, value], it’s used by default in for..of.
+
+let obj = { name: "John", age: 30 };
+let newMap = new Map(Object.entries(obj));
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// ! Sets
+
+const set = new Set(iterable) // creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+set.add(value) // adds a value, returns the set itself.
+set.delete(value) // removes the value, returns true if value existed at the moment of the call, otherwise false.
+set.has(value) // returns true if the value exists in the set, otherwise false.
+set.clear() // removes everything from the set.
+set.size // is the elements count.
